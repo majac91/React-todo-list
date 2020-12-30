@@ -1,38 +1,159 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  background-color: hsl(235, 21%, 11%);
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
+  min-height: 100vh;
+}
+header {
+  background-image: url(./img/bg-desktop-dark.jpg);
+  height: 40vh;
+  background-size: cover;
+}
+
+header .title {
+  padding-top: 15vh;
+  letter-spacing: 8px;
+  font-size: 2.5rem;
+}
+
+.container {
+  max-width: 50vw;
+  margin: auto;
+}
+
+form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: -15vh;
+}
+
+form input,
+form button {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  background-color: hsl(235, 24%, 19%);
+  color: white;
+}
+form button {
+  color: hsl(235, 24%, 19%);
+  background: hsl(235, 24%, 19%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fa-plus-square::before {
+  color: white;
+  background: hsl(235, 24%, 19%);
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  min-width: 30%;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  background: hsl(235, 24%, 19%);
+  font-size: 1.5rem;
+  /* color: black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 1s ease;
+}
+.filter-todo {
+  padding: 1rem;
+}
+.todo li {
+  flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+  background: hsl(235, 24%, 19%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.complete-btn {
+  background: hsl(235, 24%, 19%);
+}
+.todo-item {
+  padding: 0rem 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fall {
+  transform: translateY(10rem) rotateZ(20deg);
+  opacity: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/*CUSTOM SELECTOR */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background-image: none;
+}
+
+/* Custom Select */
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+select {
   color: white;
+  background-color: hsl(235, 24%, 19%);
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 12rem;
 }
-
-.App-link {
-  color: #61dafb;
+/* Arrow */
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: hsl(235, 24%, 19%);
+  cursor: pointer;
+  pointer-events: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Transition */
+/*
+.select:hover::after {
+  transform: scale(1.5);
 }
+*/
