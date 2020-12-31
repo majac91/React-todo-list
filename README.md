@@ -2,10 +2,14 @@
 
 ## Goals:
 
-[] create app
-[] implement dark mode
-[] mobile-first styling
-[] connect to database
+[ ] create app
+
+[ ] implement dark mode
+
+[ ] mobile-first styling
+
+[ ] connect to database
+
 
 ## Running the project
 
