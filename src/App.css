@@ -4,27 +4,59 @@
   box-sizing: border-box;
 }
 
-body {
+.dark {
+  height: 100vh;
   background-color: hsl(235, 21%, 11%);
   color: white;
   font-family: "Josefin Sans", sans-serif;
-  min-height: 100vh;
 }
-header {
+
+.light {
+  height: 100vh;
+  background-color: hsl(0, 0%, 98%);
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.dark .header {
   background-image: url(./img/bg-desktop-dark.jpg);
   height: 40vh;
   background-size: cover;
 }
 
+.light .header {
+  background-image: url(./img/bg-desktop-light.jpg);
+  height: 40vh;
+  background-size: cover;
+}
+
+.light-mode-btn,
+.dark-mode-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 header .title {
-  padding-top: 15vh;
   letter-spacing: 8px;
   font-size: 2.5rem;
+}
+
+.header__container {
+  height: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {
   width: 500px;
   margin: auto;
+}
+
+.App.dark .dark-mode-btn,
+.App.light .light-mode-btn {
+  display: none;
 }
 
 form {
@@ -41,19 +73,18 @@ form button {
   padding: 0.5rem;
   font-size: 2rem;
   border: none;
+}
+
+.dark form input,
+.dark form button {
   background-color: hsl(235, 24%, 19%);
   color: white;
 }
-form button {
-  color: hsl(235, 24%, 19%);
-  background: hsl(235, 24%, 19%);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
 
-.fa-plus-square::before {
-  color: white;
-  background: hsl(235, 24%, 19%);
+.light form input,
+.light form button {
+  background-color: hsl(236, 33%, 92%);
+  color: hsl(235, 19%, 35%);
 }
 
 .todo-container {
@@ -63,13 +94,10 @@ form button {
 }
 
 .todo-list {
-  /* min-width: 30%; */
   list-style: none;
 }
 
 .todo {
-  /* margin: 0.5rem; */
-  background: hsl(235, 24%, 19%);
   border-bottom: 1px solid lightgray;
   font-size: 1.5rem;
   width: 500px;
@@ -77,6 +105,14 @@ form button {
   justify-content: space-between;
   align-items: center;
   transition: all 1s ease;
+}
+
+.dark .todo {
+  background: hsl(235, 24%, 19%);
+}
+
+.light .todo {
+  background: hsl(236, 33%, 92%);
 }
 .filter-todo {
   padding: 1rem;
@@ -88,6 +124,7 @@ form button {
 .todo-input {
   width: 500px;
 }
+
 .trash-btn,
 .complete-btn {
   background: hsl(235, 24%, 19%);
