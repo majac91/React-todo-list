@@ -2,14 +2,13 @@
 
 ## Goals:
 
-- [ ] create app
+- [x] create app
 
-- [ ] implement dark mode
+- [x] implement dark mode
 
 - [ ] mobile-first styling
 
 - [ ] connect to database
-
 
 ## Running the project
 
@@ -20,7 +19,7 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-##Attribution
+## Attribution:
 
 Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
 

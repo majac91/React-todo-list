@@ -73,6 +73,7 @@ function App() {
         todos={filteredTodos}
         setTodos={setTodos}
         setStatus={setStatus}
+        setFilteredTodos={setFilteredTodos}
       />
     </div>
   );

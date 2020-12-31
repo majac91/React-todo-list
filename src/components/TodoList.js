@@ -1,11 +1,23 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, setTodos, setStatus }) => {
+const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
   const handleStatus = (event) => {
-    console.log(event.target.value);
     setStatus(event.target.value);
   };
+
+  const handleClear = () =>
+    //BUG- clearing while uncompleted is selected
+    setFilteredTodos(
+      todos.filter((todo) => {
+        if (todo.completed === true) {
+          todo.completed = "";
+          setTodos(todos.filter((item) => item !== todo)); //delete the completed todo
+          return todo; //clear the completed state
+        }
+        return todo;
+      })
+    );
 
   return (
     <div className="todo-container container">
@@ -19,7 +31,13 @@ const TodoList = ({ todos, setTodos, setStatus }) => {
             todo={todo}
           ></Todo>
         ))}
+
         <div className="todo filter-todo">
+          <div className="items-left">
+            {`${
+              todos.filter((todo) => todo.completed === false).length
+            } items left`}
+          </div>
           <button
             className="filter-btn"
             onClick={handleStatus}
@@ -44,6 +62,7 @@ const TodoList = ({ todos, setTodos, setStatus }) => {
           >
             Uncompleted
           </button>
+          <button onClick={handleClear}>Clear completed</button>
         </div>
       </ul>
     </div>
