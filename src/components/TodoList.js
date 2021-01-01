@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
+const TodoList = ({ todos, setTodos, status, setStatus, setFilteredTodos }) => {
   const handleStatus = (event) => {
     setStatus(event.target.value);
   };
@@ -29,6 +29,7 @@ const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
             setTodos={setTodos}
             todos={todos}
             todo={todo}
+            status={status}
           ></Todo>
         ))}
 

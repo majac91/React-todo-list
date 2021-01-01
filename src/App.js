@@ -72,6 +72,7 @@ function App() {
       <TodoList
         todos={filteredTodos}
         setTodos={setTodos}
+        status={status}
         setStatus={setStatus}
         setFilteredTodos={setFilteredTodos}
       />

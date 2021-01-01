@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ text, todo, todos, setTodos }) => {
+const Todo = ({ text, todo, todos, status, setTodos }) => {
   const handleDelete = () => {
     setTodos(todos.filter((item) => item.id !== todo.id));
   };
@@ -20,20 +20,33 @@ const Todo = ({ text, todo, todos, setTodos }) => {
   };
 
   return (
-    <div className="todo">
-      <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
-        {text}
-      </li>
-      <button onClick={handleComplete} className="complete-btn">
-        <i className="fas fa-check"></i>
-      </button>
+    <li className={`todo todo-item ${todo.completed ? "completed" : ""}`}>
+      {/* custom checkbox */}
+      <label className="checkbox" htmlFor={text}>
+        <input
+          onClick={handleComplete}
+          type="checkbox"
+          className="complete-btn"
+        ></input>{" "}
+        <span className="checkbox__control">
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="none"
+              stroke="#FFF"
+              strokeWidth="2"
+              d="M1 4.304L3.696 7l6-6"
+            />
+          </svg>
+        </span>
+      </label>
+      {/* todo text */}
+      {text}
+      {/* delete btn */}
       <button onClick={handleDelete} className="trash-btn">
         <i className="fas fa-trash"></i>
       </button>
-    </div>
+    </li>
   );
 };
 
 export default Todo;
-
-// item.id !== todo.id
