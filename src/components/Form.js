@@ -25,14 +25,12 @@ const Form = ({ todos, setTodos, inputText, setInputText }) => {
 
   return (
     <form className="form container" onSubmit={handleSubmit}>
-      <div className="input">
-        <input
-          onChange={handleInputText}
-          value={inputText}
-          type="text"
-          className="todo-input"
-        />
-      </div>
+      <input
+        onChange={handleInputText}
+        value={inputText}
+        type="text"
+        className="form__input"
+      />
     </form>
   );
 };

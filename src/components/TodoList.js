@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, setTodos, status, setStatus, setFilteredTodos }) => {
+const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
   const handleStatus = (event) => {
     setStatus(event.target.value);
   };
@@ -11,17 +11,17 @@ const TodoList = ({ todos, setTodos, status, setStatus, setFilteredTodos }) => {
     setFilteredTodos(
       todos.filter((todo) => {
         if (todo.completed === true) {
-          todo.completed = "";
+          todo.completed = ""; //clear the completed state
           setTodos(todos.filter((item) => item !== todo)); //delete the completed todo
-          return todo; //clear the completed state
+          return todo;
         }
         return todo;
       })
     );
 
   return (
-    <div className="todo-container container">
-      <ul className="todo-list">
+    <div className="todo__container container">
+      <ul className="todo__list">
         {todos.map((todo) => (
           <Todo
             key={todo.id}
@@ -29,11 +29,10 @@ const TodoList = ({ todos, setTodos, status, setStatus, setFilteredTodos }) => {
             setTodos={setTodos}
             todos={todos}
             todo={todo}
-            status={status}
           ></Todo>
         ))}
 
-        <div className="todo filter-todo">
+        <div className="todo__item filter-todo">
           <div className="items-left">
             {`${
               todos.filter((todo) => todo.completed === false).length

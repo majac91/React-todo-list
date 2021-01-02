@@ -1,49 +1,24 @@
 import React from "react";
+import Checkbox from "./Checkbox";
 
-const Todo = ({ text, todo, todos, status, setTodos }) => {
+const Todo = (props) => {
+  const { text, todo, todos, setTodos } = props;
   const handleDelete = () => {
     setTodos(todos.filter((item) => item.id !== todo.id));
   };
 
-  const handleComplete = () => {
-    setTodos(
-      todos.map((item) => {
-        if (item.id === todo.id) {
-          return {
-            ...item,
-            completed: !item.completed,
-          };
-        }
-        return item;
-      })
-    );
-  };
-
   return (
-    <li className={`todo todo-item ${todo.completed ? "completed" : ""}`}>
-      {/* custom checkbox */}
-      <label className="checkbox" htmlFor={text}>
-        <input
-          onClick={handleComplete}
-          type="checkbox"
-          className="complete-btn"
-        ></input>{" "}
-        <span className="checkbox__control">
-          <svg xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill="none"
-              stroke="#FFF"
-              strokeWidth="2"
-              d="M1 4.304L3.696 7l6-6"
-            />
-          </svg>
-        </span>
-      </label>
-      {/* todo text */}
+    <li className={`todo__item ${todo.completed ? "completed" : ""}`}>
+      <Checkbox todo={todo} text={text} todos={todos} setTodos={setTodos} />
       {text}
-      {/* delete btn */}
-      <button onClick={handleDelete} className="trash-btn">
-        <i className="fas fa-trash"></i>
+      <button onClick={handleDelete} className="delete-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <path
+            fill="#494C6B"
+            fill-rule="evenodd"
+            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+          />
+        </svg>{" "}
       </button>
     </li>
   );

@@ -1,7 +1,6 @@
 /* eslint-disable default-case */
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import "./components/Form.js";
+import "./App.scss";
 import Form from "./components/Form.js";
 import TodoList from "./components/TodoList";
 
@@ -38,7 +37,7 @@ function App() {
     <div className={`App ${mode ? "dark" : "light"}`}>
       <header className="header">
         <div className="header__container container">
-          <h1 className="title">TODO</h1>
+          <h1 className="header__title">TODO</h1>
           <button onClick={handleMode} className="light-mode-btn" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
               <path
