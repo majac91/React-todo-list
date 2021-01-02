@@ -2,12 +2,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.1rem;
 }
 
-.container {
-  width: 500px;
-  margin: auto;
+//Media queries
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
 }
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1024) {
+    @content;
+  }
+}
+
+//Variables
 
 //Light theme
 $white: white;
@@ -25,3 +41,17 @@ $grayish-blue-hover: hsl(236, 33%, 92%);
 $dark-theme-dark-gray: hsl(234, 11%, 52%);
 $very-dark-grayish-blue: hsl(233, 14%, 35%);
 $dark-theme-darkest-gray: hsl(237, 14%, 26%);
+
+.container {
+  width: 40vw;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@include mobile {
+  .container {
+    width: 85vw;
+  }
+}

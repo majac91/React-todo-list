@@ -1,5 +1,6 @@
 /* eslint-disable default-case */
 import React from "react";
+import Checkbox from "./Checkbox";
 
 const Form = ({ todos, setTodos, inputText, setInputText }) => {
   const handleInputText = (event) => {
@@ -26,6 +27,7 @@ const Form = ({ todos, setTodos, inputText, setInputText }) => {
   return (
     <form className="form container" onSubmit={handleSubmit}>
       <input
+        placeholder="Add a task"
         onChange={handleInputText}
         value={inputText}
         type="text"

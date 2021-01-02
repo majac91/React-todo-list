@@ -20,52 +20,52 @@ const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
     );
 
   return (
-    <div className="todo__container container">
-      <ul className="todo__list">
-        {todos.map((todo) => (
-          <Todo
-            key={todo.id}
-            text={todo.text}
-            setTodos={setTodos}
-            todos={todos}
-            todo={todo}
-          ></Todo>
-        ))}
+    <ul className="todo__list container">
+      {todos.map((todo) => (
+        <Todo
+          key={todo.id}
+          text={todo.text}
+          setTodos={setTodos}
+          todos={todos}
+          todo={todo}
+        ></Todo>
+      ))}
 
-        <div className="todo__item filter-todo">
-          <div className="items-left">
-            {`${
-              todos.filter((todo) => todo.completed === false).length
-            } items left`}
-          </div>
-          <button
-            className="filter-btn"
-            onClick={handleStatus}
-            type="button"
-            value="all"
-          >
-            All
-          </button>
-          <button
-            className="filter-btn"
-            onClick={handleStatus}
-            type="button"
-            value="completed"
-          >
-            Completed
-          </button>
-          <button
-            className="filter-btn"
-            onClick={handleStatus}
-            type="button"
-            value="uncompleted"
-          >
-            Uncompleted
-          </button>
-          <button onClick={handleClear}>Clear completed</button>
+      <div className="todo__item todo__filter">
+        <div className="items-left">
+          {`${
+            todos.filter((todo) => todo.completed === false).length
+          } items left`}
         </div>
-      </ul>
-    </div>
+        <button
+          className="filter-btn"
+          onClick={handleStatus}
+          type="button"
+          value="all"
+        >
+          All
+        </button>
+        <button
+          className="filter-btn"
+          onClick={handleStatus}
+          type="button"
+          value="completed"
+        >
+          Completed
+        </button>
+        <button
+          className="filter-btn"
+          onClick={handleStatus}
+          type="button"
+          value="uncompleted"
+        >
+          Uncompleted
+        </button>
+        <button className="filter-btn" onClick={handleClear}>
+          Clear completed
+        </button>
+      </div>
+    </ul>
   );
 };
 

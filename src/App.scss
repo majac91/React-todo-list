@@ -4,8 +4,8 @@
 .App {
   height: 100vh;
   color: white;
-  font-family: "Josefin Sans", sans-serif;
   transition: all 1s ease;
+
   &.dark {
     @include header("dark");
     @include form("dark");
@@ -20,14 +20,7 @@
   }
 }
 
-.filter-btn {
-  background: hsl(235, 24%, 19%);
-  color: white;
-  border: none;
-  margin-left: 1rem;
-}
-
-.fall {
-  transform: translateY(10rem) rotateZ(20deg);
-  opacity: 0;
-}
+// .fall {
+//   transform: translateY(10rem) rotateZ(20deg);
+//   opacity: 0;
+// }
