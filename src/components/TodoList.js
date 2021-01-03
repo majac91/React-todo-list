@@ -19,54 +19,69 @@ const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
       })
     );
 
-  return (
-    <ul className="todo__list container">
-      {todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          text={todo.text}
-          setTodos={setTodos}
-          todos={todos}
-          todo={todo}
-        ></Todo>
-      ))}
-
-      <div className="todo__item todo__filter">
-        <div className="items-left">
-          {`${
-            todos.filter((todo) => todo.completed === false).length
-          } items left`}
+  if (todos.length === 0) {
+    return (
+      <ul className="todo__list container">
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            text={todo.text}
+            setTodos={setTodos}
+            todos={todos}
+            todo={todo}
+          ></Todo>
+        ))}
+      </ul>
+    );
+  } else {
+    return (
+      <ul className="todo__list container">
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            text={todo.text}
+            setTodos={setTodos}
+            todos={todos}
+            todo={todo}
+          ></Todo>
+        ))}
+        <div className="todo__item todo__filter">
+          <div className="items-left">
+            {`${
+              todos.filter((todo) => todo.completed === false).length
+            } items left`}
+          </div>
+          <button
+            className="filter-btn"
+            onClick={handleStatus}
+            type="button"
+            value="all"
+          >
+            All
+          </button>
+          <button
+            className="filter-btn"
+            onClick={handleStatus}
+            type="button"
+            value="completed"
+          >
+            Completed
+          </button>
+          <button
+            className="filter-btn"
+            onClick={handleStatus}
+            type="button"
+            value="uncompleted"
+          >
+            Uncompleted
+          </button>
+          <button className="filter-btn" onClick={handleClear}>
+            Clear completed
+          </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={handleStatus}
-          type="button"
-          value="all"
-        >
-          All
-        </button>
-        <button
-          className="filter-btn"
-          onClick={handleStatus}
-          type="button"
-          value="completed"
-        >
-          Completed
-        </button>
-        <button
-          className="filter-btn"
-          onClick={handleStatus}
-          type="button"
-          value="uncompleted"
-        >
-          Uncompleted
-        </button>
-        <button className="filter-btn" onClick={handleClear}>
-          Clear completed
-        </button>
-      </div>
-    </ul>
-  );
+      </ul>
+    );
+  }
 };
 
 export default TodoList;

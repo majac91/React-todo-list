@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,19 +9,38 @@
 }
 
 //Media queries
-@mixin mobile {
-  @media (max-width: 767px) {
-    @content;
+@mixin respond($breakpoint) {
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 766px) {
+      @content;
+    }
+  }
+  @if $breakpoint==tablet {
+    @media only screen and (min-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 1024px) {
+      @content;
+    }
   }
 }
-@mixin tablet {
-  @media (min-width: 768px) {
-    @content;
+
+.container {
+  width: 40vw;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include respond(mobile) {
+    width: 85vw;
   }
-}
-@mixin desktop {
-  @media (min-width: 1024) {
-    @content;
+  @include respond(tablet) {
+    width: 85vw;
+  }
+  @include respond(desktop) {
+    width: 45vw;
   }
 }
 
@@ -41,17 +62,3 @@ $grayish-blue-hover: hsl(236, 33%, 92%);
 $dark-theme-dark-gray: hsl(234, 11%, 52%);
 $very-dark-grayish-blue: hsl(233, 14%, 35%);
 $dark-theme-darkest-gray: hsl(237, 14%, 26%);
-
-.container {
-  width: 40vw;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@include mobile {
-  .container {
-    width: 85vw;
-  }
-}

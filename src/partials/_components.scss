@@ -1,31 +1,30 @@
 @mixin header($theme: "dark") {
   .header {
-    height: 20rem;
     background-size: cover;
     transition: all 1s ease;
+    height: 17rem;
+
     &__container {
-      height: 15rem;
+      height: 14rem;
       justify-content: space-between;
     }
     &__title {
       letter-spacing: 12px;
       font-size: 2.5rem;
     }
+    .light-mode-btn,
+    .dark-mode-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
   }
 
-  .light-mode-btn,
-  .dark-mode-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  //media queries
-  @include mobile {
+  @include respond(mobile) {
     .header {
-      height: 15rem;
+      height: 13rem;
       &__container {
-        height: 8rem;
+        height: 9rem;
       }
       &__title {
         font-size: 1.5rem;
@@ -33,7 +32,6 @@
     }
   }
 
-  //theme styles
   @if $theme== "dark" {
     .dark-mode-btn {
       display: none;
@@ -54,7 +52,6 @@
 @mixin form($theme: "dark") {
   .form {
     font-size: 1.5rem;
-    transition: all 1s ease;
     justify-content: space-between;
     position: relative;
     top: -3.5rem;
@@ -66,7 +63,6 @@
     }
   }
 
-  //theme styles
   @if $theme== "dark" {
     .form__input {
       color: white;
@@ -103,7 +99,11 @@
       text-decoration: line-through;
       opacity: 0.5;
       .checkbox {
-        background: red;
+        background: linear-gradient(
+          -230deg,
+          hsl(192, 100%, 67%),
+          hsl(280, 87%, 65%)
+        );
       }
       .checkbox__control {
         font-size: 0.5rem;
@@ -162,7 +162,6 @@
     font-size: 0.7rem;
   }
 
-  //theme styles
   @if $theme== "dark" {
     .todo__item {
       color: white;
