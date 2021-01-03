@@ -1,16 +1,17 @@
 @mixin header($theme: "dark") {
   .header {
+    transition: all 1s ease; //TODO fix transition
+    -moz-transition: all 1s ease;
     background-size: cover;
-    transition: all 1s ease;
-    height: 17rem;
+    height: 18rem;
 
     &__container {
-      height: 14rem;
+      height: 12rem;
       justify-content: space-between;
     }
     &__title {
       letter-spacing: 12px;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
     }
     .light-mode-btn,
     .dark-mode-btn {
@@ -22,9 +23,9 @@
 
   @include respond(mobile) {
     .header {
-      height: 13rem;
+      height: 15rem;
       &__container {
-        height: 9rem;
+        height: 11rem;
       }
       &__title {
         font-size: 1.5rem;
@@ -49,17 +50,33 @@
   }
 }
 
+.list-field {
+  height: 4rem;
+
+  &:first-child {
+    border-radius: 0.3rem 0.3rem 0px 0px;
+  }
+  &:last-child {
+    border-radius: 0px 0px 0.3rem 0.3rem;
+  }
+}
+
 @mixin form($theme: "dark") {
   .form {
     font-size: 1.5rem;
     justify-content: space-between;
     position: relative;
-    top: -3.5rem;
+    top: -8rem;
     &__input {
-      height: 4rem;
-      padding: 0.5rem;
       border: none;
+      border-radius: 0.3rem;
       width: 100%;
+    }
+  }
+
+  @include respond(mobile) {
+    .form {
+      top: -7rem;
     }
   }
 
@@ -83,47 +100,47 @@
     flex-direction: column;
     align-items: initial;
     position: relative;
-    top: -3.5rem;
+    top: -6.8rem;
   }
   .todo__item {
-    border-bottom: 1px solid lightgray;
-    padding: 0.5rem;
-    height: 4rem;
-
     display: flex;
     align-items: center;
     transition: all 1s ease;
+    &:first-child {
+      border: none;
+    }
 
     //completed todo checkbox
     &.completed {
       text-decoration: line-through;
-      opacity: 0.5;
+      .todo__text {
+        opacity: 0.5;
+      }
       .checkbox {
-        background: linear-gradient(
-          -230deg,
+        background-image: linear-gradient(
           hsl(192, 100%, 67%),
           hsl(280, 87%, 65%)
         );
       }
       .checkbox__control {
+        //TODO fix button not being fully clickable
         font-size: 0.5rem;
         opacity: 1;
         position: relative;
         width: 5px;
         height: 5px;
-        top: -2.5rem;
-        left: 0.6rem;
+        top: -2.2rem;
+        left: 0.4rem;
       }
     }
   }
 
   //umcompleted todo checkbox
   .checkbox {
-    border: 1px solid gray;
     border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    margin-right: 0.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0 1rem;
 
     .checkbox__btn {
       opacity: 0;
@@ -131,6 +148,10 @@
       width: 2rem;
     }
     .checkbox__control {
+      transition: all 1s ease;
+      position: relative;
+      top: -2.2rem;
+      left: 0.3rem;
       opacity: 0;
       svg {
         height: 10px;
@@ -155,23 +176,57 @@
 
   .filter-btn,
   .items-left {
-    background: hsl(235, 24%, 19%);
-    color: white;
     border: none;
     margin-left: 1rem;
     font-size: 0.7rem;
   }
 
-  @if $theme== "dark" {
-    .todo__item {
-      color: white;
-      background: hsl(235, 24%, 19%);
+  .todo__filter {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include respond(mobile) {
+    .todo__list {
+      top: -5.8rem;
     }
   }
-  else {
+
+  @if $theme== "dark" {
     .todo__item {
-      color: hsl(235, 19%, 35%);
+      background: hsl(235, 24%, 19%);
+      border-top: 0.5px solid $light-theme-dark-gray;
+    }
+    .checkbox {
+      border: 1px solid $very-light-grayish-blue;
+    }
+    .filter-btn,
+    .items-left {
+      background: hsl(235, 24%, 19%);
+      color: white;
+    }
+  } @else {
+    .todo__item {
+      color: $light-theme-darkest-gray;
       background-color: $white;
+      border-top: 1px solid $light-grayish-blue;
+    }
+    .checkbox {
+      border: double 2px transparent;
+      border-radius: 80px;
+      background-image: linear-gradient(white, white),
+        radial-gradient(
+          circle at top left,
+          hsl(192, 100%, 67%),
+          hsl(280, 87%, 65%)
+        );
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+    .filter-btn,
+    .items-left {
+      background: white;
+      color: black;
     }
   }
 }

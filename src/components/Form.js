@@ -31,7 +31,7 @@ const Form = ({ todos, setTodos, inputText, setInputText }) => {
         onChange={handleInputText}
         value={inputText}
         type="text"
-        className="form__input"
+        className="form__input list-field"
       />
     </form>
   );

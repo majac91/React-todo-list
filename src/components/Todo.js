@@ -8,9 +8,11 @@ const Todo = (props) => {
   };
 
   return (
-    <li className={`todo__item ${todo.completed ? "completed" : ""}`}>
+    <li
+      className={`todo__item list-field ${todo.completed ? "completed" : ""}`}
+    >
       <Checkbox todo={todo} text={text} todos={todos} setTodos={setTodos} />
-      {text}
+      <span className="todo__text">{text}</span>
       <button onClick={handleDelete} className="delete-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
           <path
