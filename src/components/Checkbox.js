@@ -19,22 +19,25 @@ function Checkbox({ todo, text, todos, setTodos }) {
   };
 
   return (
-    <label className="checkbox" htmlFor={text}>
-      <input
-        onClick={handleComplete}
-        type="checkbox"
-        className="checkbox__btn"
-      ></input>{" "}
-      <span className="checkbox__control">
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <path
-            fill="none"
-            stroke="#FFF"
-            strokeWidth="2"
-            d="M1 4.304L3.696 7l6-6"
-          />
-        </svg>
+    <label className="checkbox">
+      <span className="checkbox__container">
+        <input
+          type="checkbox"
+          className="checkbox__input"
+          name="checkbox"
+        ></input>
+        <span className="checkbox__control">
+          <svg className="checkbox__icon" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="none"
+              stroke="#FFF"
+              strokeWidth="2"
+              d="M1 4.304L3.696 7l6-6"
+            />
+          </svg>
+        </span>
       </span>
+      <span className="checkbox__label ">{text}</span>
     </label>
   );
 }
