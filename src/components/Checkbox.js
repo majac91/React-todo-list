@@ -22,18 +22,14 @@ function Checkbox({ todo, text, todos, setTodos }) {
     <label className="checkbox">
       <span className="checkbox__container">
         <input
+          onChange={handleComplete}
           type="checkbox"
           className="checkbox__input"
           name="checkbox"
         ></input>
         <span className="checkbox__control">
           <svg className="checkbox__icon" xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill="none"
-              stroke="#FFF"
-              strokeWidth="2"
-              d="M1 4.304L3.696 7l6-6"
-            />
+            <path fill="none" strokeWidth="2" d="M1 4.304L3.696 7l6-6" />
           </svg>
         </span>
       </span>
