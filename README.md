@@ -6,7 +6,9 @@
 
 - [x] implement dark mode
 
-- [ ] mobile-first styling
+- [ ] accessibility
+
+- [ ] drag and drop to reorder
 
 - [ ] connect to database
 

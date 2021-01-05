@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Todo from "./Todo";
 
 const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
@@ -19,8 +19,10 @@ const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
       })
     );
 
+  //TODO - move the 'completed' div down on mobile
+
   if (todos.length === 0) {
-    //BUG - doesn't work when
+    //BUG - doesn't work when all items are deleted from the list
     return (
       <ul className="todo__list container">
         {todos.map((todo) => (
@@ -52,7 +54,7 @@ const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
               todos.filter((todo) => todo.completed === false).length
             } items left`}
           </div>
-          <div>
+          <div className="items-status">
             <button
               className="filter-btn"
               onClick={handleStatus}

@@ -1,6 +1,5 @@
 /* eslint-disable default-case */
 import React from "react";
-import Checkbox from "./Checkbox";
 
 const Form = ({ todos, setTodos, inputText, setInputText }) => {
   const handleInputText = (event) => {
