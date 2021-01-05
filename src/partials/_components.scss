@@ -1,7 +1,7 @@
 @mixin header($theme: "dark") {
   .header {
-    transition: all 1s ease; //TODO fix transition
-    -moz-transition: all 1s ease;
+    transition: background-image 1s ease; //TODO fix transition
+    -moz-transition: background-image 1s ease;
     background-size: cover;
     height: 18rem;
 
@@ -53,13 +53,17 @@
 @mixin form($theme: "dark") {
   .form {
     font-size: 1.5rem;
-    justify-content: space-between;
     position: relative;
     top: -8rem;
     &__input {
       border: none;
       border-radius: 0.3rem;
       width: 100%;
+      padding: 1rem;
+      &::placeholder {
+        padding-left: 1rem;
+        color: $light-theme-darkest-gray;
+      }
     }
   }
 
@@ -71,13 +75,16 @@
 
   @if $theme== "dark" {
     .form__input {
-      color: white;
-      background-color: hsl(235, 24%, 19%);
+      color: $white;
+      background-color: $very-dark-desaturated-blue;
+      &::placeholder {
+        color: $white;
+      }
     }
   }
   else {
     .form__input {
-      color: hsl(235, 19%, 35%);
+      color: $light-theme-darkest-gray;
       background-color: $white;
     }
   }
@@ -94,12 +101,11 @@
   .todo__item {
     display: flex;
     align-items: center;
-    transition: all 1s ease;
     &:first-child {
       border: none;
     }
     &:hover {
-      path {
+      .delete-btn {
         stroke: $light-grayish-blue;
       }
     }
@@ -107,7 +113,6 @@
       .checkbox__label {
         opacity: 0.5;
         text-decoration: line-through;
-        transition: all 1s ease;
       }
     }
   }
@@ -146,7 +151,7 @@
 
   @if $theme== "dark" {
     .todo__item {
-      background: hsl(235, 24%, 19%);
+      background: $very-dark-desaturated-blue;
       border-top: 0.5px solid $light-theme-dark-gray;
     }
     .checkbox__control {
@@ -154,12 +159,12 @@
     }
     .checkbox__input {
       &:focus + .checkbox__control {
-        box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em currentColor;
+        box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em white;
       }
     }
     .filter-btn,
     .items-left {
-      background: hsl(235, 24%, 19%);
+      background: $very-dark-desaturated-blue;
       color: white;
     }
   } @else {
@@ -174,6 +179,17 @@
       border: 0.5px solid $light-grayish-blue;
     }
 
+    .completed {
+      .checkbox__control {
+        background-image: linear-gradient($blue, $pink);
+      }
+      &:hover {
+        path {
+          stroke: $light-grayish-blue;
+        }
+      }
+    }
+
     .checkbox__label {
       color: $light-theme-darkest-gray;
     }
@@ -182,27 +198,13 @@
       &:hover + .checkbox__control {
         border: double 2px transparent;
         background-image: linear-gradient(white, white),
-          radial-gradient(
-            circle at top left,
-            hsl(192, 100%, 67%),
-            hsl(280, 87%, 65%)
-          );
+          radial-gradient(circle at top left, $blue, $pink);
         background-origin: border-box;
         background-clip: content-box, border-box;
       }
-    }
-
-    .completed {
-      .checkbox__control {
-        background-image: linear-gradient(
-          hsl(192, 100%, 67%),
-          hsl(280, 87%, 65%)
-        );
-      }
-      &:hover {
-        path {
-          stroke: $light-grayish-blue;
-        }
+      &:focus + .checkbox__control {
+        box-shadow: 0 0 0 0.05em $very-light-grayish-blue,
+          0 0 0.15em 0.1em $very-light-grayish-blue;
       }
     }
 
@@ -220,7 +222,6 @@
   grid-gap: 0.5em;
   font-size: 2rem;
   padding: 1rem;
-
   &__container {
     display: grid;
     grid-template-areas: "checkbox";
@@ -228,7 +229,6 @@
       grid-area: checkbox;
     }
   }
-
   &__input {
     opacity: 0;
     width: 1em;
@@ -238,7 +238,6 @@
       opacity: 1;
     }
   }
-
   &__control {
     display: inline-grid;
     width: 1.5em;
@@ -246,9 +245,7 @@
     border-radius: 50%;
   }
   &__icon {
-    transition: opacity 0.5s ease;
-    width: 1.5em;
-    height: 1.5em;
+    transition: opacity 0.3s ease;
     opacity: 0;
     position: relative;
     top: 0.5rem;
@@ -256,8 +253,5 @@
     path {
       stroke: white;
     }
-  }
-  &__label {
-    color: white;
   }
 }
