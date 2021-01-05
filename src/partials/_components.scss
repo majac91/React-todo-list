@@ -1,6 +1,6 @@
 @mixin header($theme: "dark") {
   .header {
-    transition: background-image 1s ease; //TODO fix transition
+    transition: background-image 1s ease; //TODO fix transition not working on Firefox
     -moz-transition: background-image 1s ease;
     background-size: cover;
     height: 18rem;
