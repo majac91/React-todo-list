@@ -1,12 +1,6 @@
-/* eslint-disable default-case */
 import React from "react";
 
 const Form = ({ todos, setTodos, inputText, setInputText }) => {
-  const handleInputText = (event) => {
-    const value = event.target.value;
-    setInputText(value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -27,7 +21,9 @@ const Form = ({ todos, setTodos, inputText, setInputText }) => {
     <form className="form container" onSubmit={handleSubmit}>
       <input
         placeholder="Add a task"
-        onChange={handleInputText}
+        onChange={(event) => {
+          setInputText(event.target.value);
+        }}
         value={inputText}
         type="text"
         className="form__input list-field"

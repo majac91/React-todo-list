@@ -1,4 +1,6 @@
-# React to-do app with dark mode
+# React to-do app with integrated dark mode
+
+https://check-off.netlify.app/
 
 ## Goals:
 
