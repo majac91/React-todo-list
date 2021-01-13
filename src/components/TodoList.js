@@ -1,28 +1,20 @@
-import React, { useState } from "react";
-import Todo from "./Todo";
+import React from "react";
+import Todo from "./Todo.js";
+import ListFilter from "./ListFilter.js";
 
-const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
-  const handleStatus = (event) => {
-    setStatus(event.target.value);
-  };
+const TodoList = ({
+  todos,
+  setTodos,
+  setStatus,
+  setFilteredTodos,
+  listIsRendered,
+  setlistIsRendered,
+}) => {
+  if (todos.length > 0) {
+    setlistIsRendered(true);
+  }
 
-  const handleClear = () =>
-    //BUG- clearing while uncompleted is selected
-    setFilteredTodos(
-      todos.filter((todo) => {
-        if (todo.completed === true) {
-          todo.completed = ""; //clear the completed state
-          setTodos(todos.filter((item) => item !== todo)); //delete the completed todo
-          return todo;
-        }
-        return todo;
-      })
-    );
-
-  //TODO - move the 'completed' div down on mobile
-
-  if (todos.length === 0) {
-    //BUG - doesn't work when all items are deleted from the list
+  if (!listIsRendered) {
     return (
       <ul className="todo__list container">
         {todos.map((todo) => (
@@ -48,43 +40,12 @@ const TodoList = ({ todos, setTodos, setStatus, setFilteredTodos }) => {
             todo={todo}
           ></Todo>
         ))}
-        <div className="todo__item todo__filter list-field">
-          <div className="items-left">
-            {`${
-              todos.filter((todo) => todo.completed === false).length
-            } items left`}
-          </div>
-          <div className="items-status">
-            <button
-              className="filter-btn"
-              onClick={handleStatus}
-              type="button"
-              value="all"
-            >
-              All
-            </button>
-            <button
-              className="filter-btn"
-              onClick={handleStatus}
-              type="button"
-              value="completed"
-            >
-              Completed
-            </button>
-            <button
-              className="filter-btn"
-              onClick={handleStatus}
-              type="button"
-              value="uncompleted"
-            >
-              Uncompleted
-            </button>
-          </div>
-
-          <button className="filter-btn" onClick={handleClear}>
-            Clear completed
-          </button>
-        </div>
+        <ListFilter
+          todos={todos}
+          setStatus={setStatus}
+          setFilteredTodos={setFilteredTodos}
+          setTodos={setTodos}
+        />
       </ul>
     );
   }

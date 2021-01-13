@@ -10,6 +10,7 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [mode, setMode] = useState(true);
+  const [listIsRendered, setlistIsRendered] = useState(false);
 
   useEffect(() => {
     handleFiltering();
@@ -69,6 +70,8 @@ function App() {
         setFilteredTodos={setFilteredTodos}
       />
       <TodoList
+        listIsRendered={listIsRendered}
+        setlistIsRendered={setlistIsRendered}
         todos={filteredTodos}
         setTodos={setTodos}
         status={status}
